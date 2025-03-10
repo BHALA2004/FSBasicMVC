@@ -6,6 +6,8 @@ import lombok.*;
 
 @Entity
 @Table(name = "USER_DETAILS")
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserDetails {
 
     @Id
@@ -18,6 +20,11 @@ public class UserDetails {
 
     @Column(name = "EMAIL")
     public String emailId;
+
+    public UserDetails(String userName, String emailId) {
+        this.userName = userName;
+        this.emailId = emailId;
+    }
 
     public String getUserName()
     {
