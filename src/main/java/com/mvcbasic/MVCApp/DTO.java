@@ -1,5 +1,8 @@
 package com.mvcbasic.MVCApp;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class DTO {
     private String emailId;
 

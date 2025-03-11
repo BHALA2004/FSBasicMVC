@@ -19,31 +19,37 @@ public class UserController {
 
     @PostMapping("/save")
     public UserDetails saveUserDetails(@RequestBody UserDetails input){
+        logger.info(userService.addUserDetails(input));
         return userService.addUserDetails(input);
     }
 
     @GetMapping
     public List<UserDetails> getUserDetails(){
+        logger.info(userService.getAllUserDetails());
        return userService.getAllUserDetails();
     }
 
     @GetMapping("/{id}")
     public UserDetails getUserDetails(@PathVariable Integer id){
+        logger.info(userService.getUserById(id));
         return userService.getUserById(id);
     }
 
     @DeleteMapping("/{id}")
     public void deleteUserDetails(@PathVariable Integer id){
+        logger.info("deleted successfully!");
        userService.deleteUserById(id);
     }
 
     @PatchMapping("/{id}")
     public UserDetails updateUserDetails(@PathVariable Integer id, @RequestBody DTO dto){
+        logger.info(userService.updateUserEmail(id,dto));
         return userService.updateUserEmail(id,dto);
     }
 
     @PutMapping("/{id}")
     public UserDetails updateAllUserDetails(@PathVariable Integer id, @RequestBody UserDetails userDetails){
+        logger.info(userService.updateAllUserDetailsById(id,userDetails));
         return userService.updateAllUserDetailsById(id,userDetails);
     }
 }

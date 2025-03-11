@@ -4,18 +4,26 @@ package com.mvcbasic.MVCApp.service;
 import com.mvcbasic.MVCApp.DTO;
 import com.mvcbasic.MVCApp.model.UserDetails;
 import com.mvcbasic.MVCApp.repository.UserRepository;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+
 public class UserService {
 
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private DTO dto;
+
 
     public UserDetails addUserDetails(UserDetails userDetails){
 
@@ -68,5 +76,19 @@ public class UserService {
             return null;
         }
     }
+
+    @Value("${app.name}")
+    private String name;
+
+    @Value("${app.version}")
+    private String version;
+
+
+    public void print(){
+        System.out.println(name+" "+version);
+    }
+
+
+
 
 }
