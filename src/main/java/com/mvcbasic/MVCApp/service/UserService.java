@@ -8,8 +8,11 @@ import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.util.List;
 import java.util.Optional;
@@ -48,6 +51,7 @@ public class UserService {
         return userDetails.get();
     }
 
+
     public void deleteUserById(int id){
         userRepository.deleteById(id);
     }
@@ -84,6 +88,7 @@ public class UserService {
     private String version;
 
 
+    @PostConstruct
     public void print(){
         System.out.println(name+" "+version);
     }
